@@ -15,7 +15,6 @@
 ### ✨ Características
 
 - 🏠 **100% Local** - Seus dados ficam no seu computador
-- 💰 **Gratuito** - Sem mensalidades ou custos escondidos
 - 🔒 **Privado** - Total controle sobre suas informações
 - 📊 **Visual** - Dashboards coloridos e intuitivos
 - 📄 **Automático** - Relatórios PDF gerados automaticamente
