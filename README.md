@@ -1,6 +1,6 @@
 # 📊 DataOps Local
 
-> Sistema completo de análise de dados para pequenas empresas - 100% local e gratuito
+> Sistema completo de análise de dados para pequenas empresas - 100% local
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.8+-green)
@@ -276,7 +276,7 @@ Se este projeto te ajudou, considere dar uma ⭐ para ajudar outras pessoas a en
 
 Este projeto foi criado com o objetivo de ajudar pequenos empreendedores a terem acesso a ferramentas profissionais de análise de dados, sem custos e sem complexidade.
 
-**Bons negócios! 🚀**
+**Bons negócios! **
 
 ---
 

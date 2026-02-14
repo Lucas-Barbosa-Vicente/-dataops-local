@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataOps Local - Arquitetura do Sistema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .swimlane {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .swimlane-header {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid;
+            color: white;
+        }
+
+        .layer1 {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        }
+
+        .layer2 {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+        }
+
+        .layer3 {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+        }
+
+        .layer4 {
+            background: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%);
+        }
+
+        .components {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .component {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+            min-width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .component-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .component-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .component-desc {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .etl-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .etl-step {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .etl-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .etl-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .database-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .database {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .tables {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .table {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .output-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .output-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #95a5a6;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 30px;
+            background: #2c3e50;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            color: white;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .footer-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .output-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                grid-template-columns: 1fr;
+            }
+            
+            .components {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 DataOps Local</h1>
+        <p class="subtitle">Arquitetura do Sistema v1.0 | 100% Local | Python-Based</p>
+
+        <!-- CAMADA 1: COLETA DE DADOS -->
+        <div class="swimlane layer1">
+            <div class="swimlane-header" style="border-color: #fff;">
+                🟢 CAMADA 1: COLETA DE DADOS
+            </div>
+            <div class="components">
+                <div class="component">
+                    <div class="component-icon">📊</div>
+                    <div class="component-title">Template_Receitas</div>
+                    <div class="component-desc">Data, Serviço, Profissional, Valor</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">💰</div>
+                    <div class="component-title">Template_Despesas</div>
+                    <div class="component-desc">Data, Categoria, Valor, Fornecedor</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">👥</div>
+                    <div class="component-title">Template_Profissionais</div>
+                    <div class="component-desc">Nome, Função, Comissão, Status</div>
+                </div>
+                <div class="component">
+                    <div class="component-icon">💼</div>
+                    <div class="component-title">Template_Servicos</div>
+                    <div class="component-desc">Nome, Preço, Tempo, Categoria</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">⬇️</div>
+
+        <!-- CAMADA 2: PROCESSAMENTO ETL -->
+        <div class="swimlane layer2">
+            <div class="swimlane-header" style="border-color: #fff;">
+                🔵 CAMADA 2: PROCESSAMENTO ETL
+            </div>
+            <div class="etl-container">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div class="component-icon">🐍</div>
+                    <div class="component-title" style="font-size: 1.3em;">processar_dados.py</div>
+                </div>
+                
+                <div class="etl-step">
+                    <div class="etl-title">📥 EXTRACT (Extração)</div>
+                    <div class="component-desc">
+                        • Lê arquivos Excel (OpenPyXL)<br>
+                        • Valida estrutura de dados<br>
+                        • Detecta erros de formato
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 10px 0;">⬇️</div>
+
+                <div class="etl-step">
+                    <div class="etl-title">🔄 TRANSFORM (Transformação)</div>
+                    <div class="component-desc">
+                        • Converte formatos de data<br>
+                        • Normaliza valores numéricos<br>
+                        • Padroniza nomes<br>
+                        • Calcula campos derivados
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 10px 0;">⬇️</div>
+
+                <div class="etl-step">
+                    <div class="etl-title">📤 LOAD (Carga)</div>
+                    <div class="component-desc">
+                        • Cria/atualiza tabelas SQLite<br>
+                        • Insere dados validados<br>
+                        • Gera estatísticas
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">⬇️</div>
+
+        <!-- CAMADA 3: ARMAZENAMENTO -->
+        <div class="swimlane layer3">
+            <div class="swimlane-header" style="border-color: #fff;">
+                🟠 CAMADA 3: ARMAZENAMENTO
+            </div>
+            <div class="database-container">
+                <div class="database">
+                    <div class="component-icon">🗄️</div>
+                    <div class="component-title" style="font-size: 1.3em;">SQLite: dataops.db</div>
+                    
+                    <div class="tables">
+                        <div class="table">
+                            <strong>📋 receitas</strong><br>
+                            <small>id, data, tipo_servico, profissional, valor</small>
+                        </div>
+                        <div class="table">
+                            <strong>📋 despesas</strong><br>
+                            <small>id, data, categoria, valor, fornecedor</small>
+                        </div>
+                        <div class="table">
+                            <strong>📋 profissionais</strong><br>
+                            <small>id, nome, funcao, comissao, status</small>
+                        </div>
+                        <div class="table">
+                            <strong>📋 servicos</strong><br>
+                            <small>id, nome, preco_base, categoria</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">⬇️</div>
+
+        <!-- CAMADA 4: SAÍDA -->
+        <div class="swimlane layer4">
+            <div class="swimlane-header" style="border-color: #fff;">
+                🟣🔴 CAMADA 4: SAÍDA
+            </div>
+            <div class="output-container">
+                <div class="output-box" style="background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); color: white;">
+                    <div class="component-icon">📈</div>
+                    <div class="component-title" style="color: white; font-size: 1.3em;">VISUALIZAÇÃO</div>
+                    <div style="margin: 20px 0;">
+                        <strong>dashboard.py</strong>
+                    </div>
+                    <div style="text-align: left; margin: 20px 0;">
+                        ✓ Métricas KPI<br>
+                        ✓ Gráficos Interativos<br>
+                        ✓ Tabelas Dinâmicas<br>
+                        ✓ Filtros (Período/Profissional)<br>
+                        ✓ Exportação de Dados
+                    </div>
+                    <div class="tech-badge">Streamlit + Plotly</div>
+                    <div style="margin-top: 15px;">
+                        <div class="component-icon">🌐</div>
+                        <div><strong>localhost:8501</strong></div>
+                    </div>
+                </div>
+
+                <div class="output-box" style="background: linear-gradient(135deg, #F44336 0%, #D32F2F 100%); color: white;">
+                    <div class="component-icon">📄</div>
+                    <div class="component-title" style="color: white; font-size: 1.3em;">RELATÓRIOS</div>
+                    <div style="margin: 20px 0;">
+                        <strong>gerar_relatorio.py</strong>
+                    </div>
+                    <div style="text-align: left; margin: 20px 0;">
+                        ✓ Resumo Financeiro<br>
+                        ✓ Top 5 Profissionais<br>
+                        ✓ Serviços Mais Vendidos<br>
+                        ✓ Despesas por Categoria<br>
+                        ✓ Tabelas Formatadas
+                    </div>
+                    <div class="tech-badge">ReportLab</div>
+                    <div style="margin-top: 15px;">
+                        <div class="component-icon">📑</div>
+                        <div><strong>PDF Files</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-section">
+                <h3>✨ Características</h3>
+                <ul>
+                    <li>100% Local</li>
+                    <li>Totalmente Gratuito</li>
+                    <li>Privacidade Total</li>
+                    <li>Zero Configuração de Servidor</li>
+                    <li>Multiplataforma (Win/Mac/Linux)</li>
+                    <li>Open Source (MIT License)</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>🛠️ Stack Tecnológica</h3>
+                <div>
+                    <span class="tech-badge">Python 3.8+</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Streamlit</span>
+                    <span class="tech-badge">Plotly</span>
+                    <span class="tech-badge">SQLite</span>
+                    <span class="tech-badge">OpenPyXL</span>
+                    <span class="tech-badge">ReportLab</span>
+                    <span class="tech-badge">SQLAlchemy</span>
+                </div>
+                <div style="margin-top: 20px;">
+                    <strong>Arquitetura:</strong> 4-Layer | Local-First | ETL Pipeline
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; color: #7f8c8d;">
+            <p>DataOps Local v1.0 | Desenvolvido para democratizar análise de dados</p>
+        </div>
+    </div>
+
+    <script>
+        // Adicionar interatividade aos componentes
+        document.querySelectorAll('.component').forEach(component => {
+            component.addEventListener('click', function() {
+                const title = this.querySelector('.component-title').textContent;
+                alert('📊 ' + title + '\n\nClique nos componentes para mais informações!');
+            });
+        });
+
+        // Animação suave ao carregar
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.swimlane').forEach((lane, index) => {
+                lane.style.opacity = '0';
+                lane.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    lane.style.transition = 'all 0.6s ease';
+                    lane.style.opacity = '1';
+                    lane.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
