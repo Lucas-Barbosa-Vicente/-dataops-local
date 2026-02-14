@@ -193,7 +193,7 @@ Preencher Excel → Processar → Visualizar
 - Dashboard visual e intuitivo
 
 ### 3. **Gratuito e Open Source**
-- Sem mensalidades
+
 - Sem limites de uso
 - Código aberto (MIT License)
 
@@ -360,7 +360,7 @@ O **DataOps Local** está completo e pronto para uso. É uma solução profissio
 
 ---
 
-**Desenvolvido com ❤️ para democratizar análise de dados**
+**Desenvolvido democratizar análise de dados**
 
 **Versão:** 1.0.0  
 **Data:** 12/02/2025  
