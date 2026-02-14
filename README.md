@@ -1,287 +1,232 @@
-# 📊 DataOps Local
+# 📊 DataOps Local v2.0
 
-> Sistema completo de análise de dados para pequenas empresas - 100% local
+<div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Python](https://img.shields.io/badge/python-3.8+-green)
-![License](https://img.shields.io/badge/license-MIT-orange)
+**Sistema completo de gestão financeira para pequenos negócios**
 
----
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![SQLite](https://img.shields.io/badge/SQLite-3-green.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## 🎯 O que é?
+[Funcionalidades](#-funcionalidades) •
+[Instalação](#-instalação) •
+[Como Usar](#-como-usar) •
+[Tecnologias](#️-tecnologias)
 
-**DataOps Local** é uma solução completa de gestão e análise de dados desenvolvida especialmente para pequenas empresas que precisam de controle financeiro e gerencial, mas não têm conhecimento técnico ou orçamento para ferramentas complexas.
-
-### ✨ Características
-
-- 🏠 **100% Local** - Seus dados ficam no seu computador
-- 🔒 **Privado** - Total controle sobre suas informações
-- 📊 **Visual** - Dashboards coloridos e intuitivos
-- 📄 **Automático** - Relatórios PDF gerados automaticamente
-- 🚀 **Fácil de usar** - Interface simples para não-técnicos
+</div>
 
 ---
 
-## 📦 O que está incluído?
+## 🎯 Sobre o Projeto
 
+O **DataOps Local** é um sistema de gestão financeira desenvolvido para automatizar e simplificar o controle de receitas, despesas e comissões em pequenos negócios. Com dashboard interativo e cálculos automáticos, você tem visão completa do seu negócio em tempo real.
+
+### ✨ Destaques da v2.0
+
+- 💰 **Cálculo automático de comissões** - Configure percentuais e o sistema calcula tudo
+- 💵 **Formatação brasileira** - Valores em R$ 1.234,56
+- 📊 **Dashboard interativo** - Métricas em tempo real com Streamlit
+- 🔍 **Validação robusta** - Sistema de logs e verificação de dados
+- 📈 **Análises avançadas** - Margem, CAC, fluxo de caixa
+
+---
+
+## 🚀 Funcionalidades
+
+### 💰 Gestão Financeira
+- ✅ Controle de receitas e despesas
+- ✅ Cálculo automático de comissões por profissional
+- ✅ Análise de margem de lucro
+- ✅ Separação entre custos fixos e variáveis
+- ✅ Múltiplas formas de pagamento (Boleto, PIX, Cartão, etc.)
+
+### 📊 Dashboard Analítico
+- ✅ Métricas financeiras em tempo real
+- ✅ Gráfico de fluxo de caixa
+- ✅ Análise por profissional
+- ✅ Comparação: Despesas Manuais vs Comissões
+- ✅ Filtros inteligentes (período, profissional, tipo)
+- ✅ Visualização de formas de pagamento
+
+### 🔧 Recursos Técnicos
+- ✅ Sistema de logs completo
+- ✅ Validação de dados antes da importação
+- ✅ Suporte a múltiplos formatos de data
+- ✅ Download de dados em CSV
+- ✅ Alertas automáticos de performance
+- ✅ Backup automático
+
+---
+
+## 🛠️ Tecnologias
+
+- **Python 3.8+** - Linguagem principal
+- **Pandas** - Manipulação de dados
+- **Streamlit** - Dashboard interativo
+- **Plotly** - Gráficos e visualizações
+- **SQLite** - Banco de dados local
+- **OpenPyXL** - Leitura de arquivos Excel
+
+---
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+- Python 3.8 ou superior
+- pip (gerenciador de pacotes Python)
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/Lucas-Barbosa-Vicente/-dataops-local.git
+cd -dataops-local
+```
+
+2. **Instale as dependências:**
+```bash
+pip install pandas streamlit plotly openpyxl
+```
+
+3. **Estrutura de pastas:**
 ```
 DataOps-Local/
-├── 1-coleta/              ← VOCÊ PREENCHE AQUI (Excel)
-│   ├── Template_Receitas.xlsx
-│   ├── Template_Despesas.xlsx
-│   ├── Template_Profissionais.xlsx
-│   └── Template_Servicos.xlsx
-│
-├── 2-processamento/       ← Sistema processa automaticamente
-│   └── processar_dados.py
-│
-├── 3-visualizacao/        ← Dashboard interativo
-│   └── dashboard.py
-│
-├── 4-relatorios/          ← Relatórios PDF gerados
-│   └── gerar_relatorio.py
-│
-├── dados/                 ← Banco de dados (SQLite)
-│   └── dataops.db
-│
-└── documentacao/          ← Guias de uso
-    ├── INICIO_RAPIDO.md
-    └── COMO_PREENCHER_PLANILHAS.md
+├── 1-coleta/          # Planilhas Excel
+├── 2-processamento/   # Scripts de importação
+├── 3-analytics/       # Dashboard
+├── dados/             # Banco de dados (criado automaticamente)
+└── logs/              # Logs de processamento
 ```
 
 ---
 
-## 🚀 Início Rápido
+## 🎯 Como Usar
 
-### 1️⃣ Instalação (apenas 1 vez)
+### 1️⃣ Preparar os Dados
 
-**Pré-requisito:** Ter Python instalado → [Download Python](https://www.python.org/downloads/)
+Preencha as planilhas na pasta `1-coleta/`:
 
-```bash
-# Clone ou baixe este projeto
-cd DataOps-Local
+- **Template_Receitas.xlsx** - Serviços prestados
+- **Template_Despesas.xlsx** - Gastos operacionais
+- **Template_Profissionais.xlsx** - Dados dos profissionais
+- **Template_Servicos.xlsx** - Catálogo de serviços
 
-# Instale as dependências
-pip install -r requirements.txt
-```
-
-### 2️⃣ Uso Diário
-
-**Passo 1:** Preencha as planilhas Excel na pasta `1-coleta/`
-
-**Passo 2:** Processe os dados
+### 2️⃣ Processar os Dados
 ```bash
 python 2-processamento/processar_dados.py
 ```
 
-**Passo 3:** Visualize os resultados
+**O que acontece:**
+- ✅ Importa todas as planilhas
+- ✅ Valida os dados
+- ✅ Calcula comissões automaticamente
+- ✅ Gera relatório completo
+- ✅ Salva logs em `logs/importacao.log`
+
+### 3️⃣ Visualizar o Dashboard
 ```bash
-# Dashboard interativo
-streamlit run 3-visualizacao/dashboard.py
+streamlit py -3.10 -m streamlit run 3-visualizacao\dashboard.py
 
-# OU gere relatório PDF
-python 4-relatorios/gerar_relatorio.py
 ```
 
----
-
-## 📊 Funcionalidades
-
-### 💰 Controle Financeiro
-- ✅ Registro de todas as receitas
-- ✅ Controle de despesas por categoria
-- ✅ Cálculo automático de saldo
-- ✅ Análise de formas de pagamento
-
-### 👥 Gestão de Profissionais
-- ✅ Desempenho individual de cada colaborador
-- ✅ Cálculo automático de comissões
-- ✅ Ranking de produtividade
-- ✅ Análise de ticket médio por pessoa
-
-### 💼 Análise de Serviços
-- ✅ Serviços mais vendidos
-- ✅ Rentabilidade por tipo de serviço
-- ✅ Tempo médio de atendimento
-- ✅ Análise de precificação
-
-### 📈 Visualizações
-- ✅ Gráficos de evolução temporal
-- ✅ Comparativos por período
-- ✅ Dashboards interativos
-- ✅ Relatórios PDF profissionais
+O dashboard abre automaticamente no navegador em `http://localhost:8501`
 
 ---
 
-## 🎓 Documentação
+## 📊 Métricas Disponíveis
 
-| Documento | Descrição |
-|-----------|-----------|
-| [Início Rápido](documentacao/INICIO_RAPIDO.md) | Guia completo de instalação e primeiros passos |
-| [Como Preencher Planilhas](documentacao/COMO_PREENCHER_PLANILHAS.md) | Tutorial detalhado de cada planilha |
+### Indicadores Principais
+- 💵 **Receitas Totais**
+- 📉 **Despesas Totais** (Operacionais + Comissões)
+- 💰 **Saldo e Margem**
+- 🎯 **Ticket Médio**
 
----
-
-## 🛠 Tecnologias Utilizadas
-
-| Tecnologia | Uso |
-|------------|-----|
-| **Python** | Linguagem principal |
-| **Pandas** | Processamento de dados |
-| **SQLite** | Banco de dados local |
-| **Streamlit** | Interface web do dashboard |
-| **Plotly** | Gráficos interativos |
-| **ReportLab** | Geração de PDFs |
-| **OpenPyXL** | Leitura de arquivos Excel |
-
----
-
-## 📋 Requisitos
-
-- Python 3.8 ou superior
-- Windows, Mac ou Linux
-- 50MB de espaço em disco
-- Navegador web (para dashboard)
+### Análises Detalhadas
+- 👥 **Desempenho por Profissional**
+  - Total de vendas
+  - Comissão calculada
+  - Margem de contribuição
+  
+- 💳 **Formas de Pagamento**
+  - Receitas por método
+  - Despesas por método
+  
+- 📈 **Fluxo de Caixa**
+  - Entradas e saídas diárias
+  - Saldo acumulado
 
 ---
 
-## 🎯 Para quem é este projeto?
+---
 
-### ✅ Ideal para:
-- 💇 Salões de beleza e barbearias
-- 🍽️ Restaurantes e lanchonetes
-- 🔧 Oficinas e prestadores de serviço
-- 🏥 Clínicas e consultórios pequenos
-- 🎨 Estúdios e ateliês
-- 📚 Escolas de idiomas e cursos
+## 🐛 Solução de Problemas
 
-### ❌ NÃO é ideal para:
-- Grandes empresas com ERPs complexos
-- Negócios que precisam de múltiplos usuários simultâneos
-- Empresas com departamento de TI próprio
+### Problema: "Erro ao converter data"
+**Solução:** Verifique se as datas nas planilhas estão em formato DD/MM/YYYY
+
+### Problema: "Comissões não aparecem"
+**Solução:** Execute o processamento: `python 2-processamento/processar_dados.py`
+
+### Problema: "Dashboard não carrega"
+**Solução:** 
+1. Verifique se o banco existe: `dados/dataops.db`
+2. Execute o diagnóstico: `python diagnostico.py`
 
 ---
 
-## 🔐 Privacidade e Segurança
+## 📚 Documentação Adicional
 
-- ✅ Todos os dados ficam no SEU computador
-- ✅ Nenhuma informação é enviada para internet
-- ✅ Você tem controle total dos seus dados
-- ✅ Faça backup quando quiser
-- ✅ Delete quando quiser
+- [ANALISE_COMPLETA.md](ANALISE_COMPLETA.md) - Análise detalhada do projeto
+- [GUIA_MIGRACAO.md](GUIA_MIGRACAO.md) - Como migrar da v1.0 para v2.0
+- [logs/importacao.log](logs/) - Logs de cada processamento
 
 ---
 
-## 📸 Screenshots
+## 🔄 Atualizações
 
-### Dashboard Principal
-```
-┌─────────────────────────────────────────────────────┐
-│  💰 Indicadores Financeiros                         │
-├─────────────────────────────────────────────────────┤
-│  💵 Receitas    📉 Despesas    💰 Saldo    🎯 Ticket│
-│  R$ 10.500     R$ 7.200       R$ 3.300    R$ 75    │
-└─────────────────────────────────────────────────────┘
+### v2.0 - Fevereiro 2026
+- ✨ Cálculo automático de comissões
+- 🐛 Correção do bug de data (fevereiro)
+- 💵 Formatação brasileira completa
+- 📊 Novo layout de métricas
+- 🔍 Sistema de validação robusto
+- 📝 Logs detalhados
 
-┌──────────────────────┬──────────────────────────────┐
-│ 📊 Receitas/Prof     │ 🥧 Distribuição Serviços     │
-│                      │                              │
-│  [Gráfico de Barras] │  [Gráfico Pizza]            │
-└──────────────────────┴──────────────────────────────┘
-```
-
-### Relatório PDF
-```
-╔════════════════════════════════════════╗
-║  RELATÓRIO GERENCIAL MENSAL            ║
-╠════════════════════════════════════════╣
-║  1. RESUMO FINANCEIRO                  ║
-║  2. DESEMPENHO POR PROFISSIONAL        ║
-║  3. SERVIÇOS MAIS REALIZADOS           ║
-║  4. DESPESAS POR CATEGORIA             ║
-╚════════════════════════════════════════╝
-```
-
----
-
-## 🆘 Suporte e Ajuda
-
-### Problemas Comuns
-
-**"Módulo não encontrado"**
-```bash
-pip install -r requirements.txt
-```
-
-**"Erro ao processar dados"**
-- Verifique se as planilhas estão preenchidas corretamente
-- Confira o formato das datas (DD/MM/AAAA)
-- Use ponto nos valores, não vírgula
-
-**"Dashboard não abre"**
-```bash
-streamlit run 3-visualizacao/dashboard.py --server.port 8502
-```
-
----
-
-## 🗺️ Roadmap
-
-### Versão 1.0 (Atual)
-- ✅ Sistema de coleta por Excel
-- ✅ Processamento automatizado
-- ✅ Dashboard interativo
-- ✅ Relatórios em PDF
-
-### Versão 2.0 (Futuro)
-- 🔲 Múltiplas empresas no mesmo sistema
-- 🔲 Exportação para Google Sheets
-- 🔲 Backup automático em nuvem (opcional)
-- 🔲 App mobile para registro rápido
-- 🔲 Previsões com Machine Learning
+### v1.0 - Janeiro 2026
+- 🎉 Lançamento inicial
+- 📊 Dashboard básico
+- 💾 Importação de dados
 
 ---
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Reportar bugs
-2. Sugerir novas funcionalidades
-3. Melhorar a documentação
-4. Enviar pull requests
-
 ---
 
-## 📄 Licença
+## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## 👨‍💻 Autor
+## 👤 Autor
 
-**Sistema DataOps**  
-Desenvolvido para democratizar análise de dados para pequenos negócios
+**Lucas Barbosa Vicente**
 
----
-
-## ⭐ Dê uma estrela!
-
-Se este projeto te ajudou, considere dar uma ⭐ para ajudar outras pessoas a encontrá-lo!
+- GitHub: [@Lucas-Barbosa-Vicente](https://github.com/Lucas-Barbosa-Vicente)
+- LinkedIn: [Lucas Barbosa](https://www.linkedin.com/in/lucas-barbosa-966930251/)
 
 ---
 
-## 🙏 Agradecimentos
+## ⭐ Mostre seu apoio
 
-Este projeto foi criado com o objetivo de ajudar pequenos empreendedores a terem acesso a ferramentas profissionais de análise de dados, sem custos e sem complexidade.
-
-**Bons negócios! **
+Se este projeto te ajudou, dê uma ⭐️!
 
 ---
 
 <div align="center">
 
-**[📚 Documentação](documentacao/)** • **[🐛 Reportar Bug](issues)** • **[💡 Sugerir Funcionalidade](issues)**
 
 </div>
